@@ -1,5 +1,6 @@
 // import { createElement } from "react";
-import Expenses from "./components/Expense/Expenses";
+import Expenses from "./components/Expenses/Expenses";
+import NewExpense from "./components/NewExpense/NewExpense";
 
 function App() {
   const expenses = [
@@ -24,6 +25,11 @@ function App() {
     },
   ];
 
+  const addExpenseHandler = (expense) => {
+    console.log("App js");
+    console.log(expense);
+  };
+
   //? HTML 코드로 작성.
   // return createElement(
   //   "div",
@@ -35,7 +41,7 @@ function App() {
   //? JSX코드로 작성.
   return (
     <div>
-      <h2>Let's get started!</h2>
+      <NewExpense onAddExpense={addExpenseHandler} />
       <Expenses items={expenses} />
     </div>
   );

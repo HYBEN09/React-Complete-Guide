@@ -52,3 +52,14 @@
     padding: 0.5rem 1.5rem;
   }
 }
+
+.change-btn{
+  background-color: bisque;
+  width: 4rem;
+  height: 3rem;
+  border-radius: 12px;
+  border: 2px solid #fff;
+  cursor: pointer;
+  margin-left: 1rem;
+  font-weight: 600;
+}
