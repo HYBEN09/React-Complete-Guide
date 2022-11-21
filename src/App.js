@@ -1,25 +1,30 @@
 import React, { useState } from "react";
-import AddUser from "./components/Users/AddUser";
-import UserList from "./components/Users/UserList";
+
+import Login from "./components/Login/Login";
+import Home from "./components/Home/Home";
+import MainHeader from "./components/MainHeader/MainHeader";
 
 function App() {
-  const [userList, setUserList] = useState([]);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
-  const addUserHandler = (userName, userAge) => {
-    //이전 상태에 의존해서 상태를 업데이트 할때 setUserList의 대체 폼 사용 -> 함수를 전달하는 폼
-    setUserList((prevUsersList) => {
-      return [
-        ...prevUsersList,
-        { name: userName, age: userAge, id: Math.random().toString() },
-      ];
-    });
+  const loginHandler = (email, password) => {
+    // We should of course check email and password
+    // But it's just a dummy/ demo anyways
+    setIsLoggedIn(true);
+  };
+
+  const logoutHandler = () => {
+    setIsLoggedIn(false);
   };
 
   return (
-    <div>
-      <AddUser onAddUser={addUserHandler} />
-      <UserList users={userList} />
-    </div>
+    <React.Fragment>
+      <MainHeader isAuthenticated={isLoggedIn} onLogout={logoutHandler} />
+      <main>
+        {!isLoggedIn && <Login onLogin={loginHandler} />}
+        {isLoggedIn && <Home onLogout={logoutHandler} />}
+      </main>
+    </React.Fragment>
   );
 }
 
