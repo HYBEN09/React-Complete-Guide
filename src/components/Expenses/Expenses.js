@@ -3,6 +3,7 @@ import ExpensesFilter from "./ExpensesFilter";
 import "./Expenses.css";
 import { useState } from "react";
 import ExpensesList from "./ExpensesList";
+import ExpensesChart from "./ExpensesChart";
 
 function Expenses(props) {
   //select 기본값 2020으로 설정
@@ -28,6 +29,8 @@ function Expenses(props) {
         selected={filteredYear}
         onChangeFilter={filterChangeHandler}
       />
+
+      <ExpensesChart expenses={filteredExpenses} />
 
       <ExpensesList items={filteredExpenses} />
     </Card>
